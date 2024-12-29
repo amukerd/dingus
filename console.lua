@@ -1,1 +1,1 @@
-game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+game:GetService("StarterGui"):SetCore("DevConsoleVisible",true)
