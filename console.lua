@@ -1,2 +1,1 @@
-local StarterGui = game:GetService("StarterGui")
-StarterGui:SetCore("DevConsoleVisible", true)
+game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
