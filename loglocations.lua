@@ -1,28 +1,36 @@
-local function searchForProximityPrompts(parent)
-    local player = game.Players.LocalPlayer
-    if not player then return end
+local function z(parent)
+    local pl = game.Players.LocalPlayer
+    if not pl then return end
 
-    local function round(value, numDecimalPlaces)
-        return math.round(value * 10^numDecimalPlaces) / 10^numDecimalPlaces
+    local function r(v, n)
+        return math.round(v * 10^n) / 10^n
     end
 
-    for _, descendant in pairs(parent:GetDescendants()) do
-        if descendant:IsA("ProximityPrompt") then
-            local a = descendant.Parent
+    for _, d in pairs(parent:GetDescendants()) do
+        if d:IsA("ProximityPrompt") then
+            local a = d.Parent
             if a and a:IsA("Attachment") then
                 local b = a.Parent
                 if b and b:IsA("BasePart") then
-                    local c = b.Parent
-                    if c.Name == "PointTask" and c.Name ~= "TravelTask" and c.Parent.Name ~= "TravelTask" then
-                        local lightContainer = b:FindFirstChild("LightContainer")
-                        if lightContainer then
-                            local pointLight = lightContainer:FindFirstChildOfClass("PointLight")
-                            if pointLight then
-                                local roundedBrightness = round(pointLight.Brightness, 2)
-                                if roundedBrightness == 0.28 then
-                                    player.Character:PivotTo(CFrame.new(b.Position))
-                                    wait(1)
-                                end
+                    local l = b:FindFirstChild("LightContainer")
+                    if l then
+                        local p = l:FindFirstChildOfClass("PointLight")
+                        if p then
+                            local rb = r(p.Brightness, 2)
+                            local plc = p.Color
+                            local tc = Color3.fromRGB(137, 255, 111)
+
+                            if rb == 0.28 and plc ~= tc then
+                                pl.Character:PivotTo(CFrame.new(b.Position))
+                                wait(0.5)
+
+                                local pp = d
+                                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+                                
+                                wait(pp.HoldDuration or 2)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+
+                                wait(1)
                             end
                         end
                     end
@@ -32,4 +40,4 @@ local function searchForProximityPrompts(parent)
     end
 end
 
-searchForProximityPrompts(workspace)
+z(workspace)
