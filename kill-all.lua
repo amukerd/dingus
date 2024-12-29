@@ -1,23 +1,16 @@
--- Get the required service and modules
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local typableNetwork = replicatedStorage:WaitForChild("Modules"):WaitForChild("TypableNetwork"):WaitForChild("6")
+local rs = game:GetService("ReplicatedStorage")
 
--- Function to run the command for all players in the game
-local function runCommandForAllPlayers()
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        local playerInstance = workspace:FindFirstChild(player.Name)
-        if playerInstance then
-            local args = {
-                [1] = playerInstance
+local function r()
+    for _, p in ipairs(game:GetService("Players"):GetPlayers()) do
+        local pi = workspace:FindFirstChild(p.Name)
+        if pi then
+            local a = {
+                [1] = pi
             }
             
-            -- Invoke the server with the arguments
-            typableNetwork:InvokeServer(unpack(args))
-            print("Command executed for:", player.Name)
-        else
-            warn("Player not found in workspace:", player.Name)
+            rs:WaitForChild("Modules"):WaitForChild("TypableNetwork"):WaitForChild("6"):InvokeServer(unpack(a))
         end
     end
 end
 
-runCommandForAllPlayers()
+r()
