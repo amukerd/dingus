@@ -20,17 +20,17 @@ Tab:Button({
     Text = "Kill NPCs",  -- Button label
     Callback = function(self)
         -- Replace this with the logic to kill NPCs
-        print("Kill NPCs button clicked!")
     end,
     BackgroundTransparency = 0,  -- No transparency for the button background
 })
 
--- Create a button to kill players
 Tab:Button({
-    Text = "Kill Players",  -- Button label
+    Text = "Kill Players",
     Callback = function(self)
-        -- Replace this with the logic to kill players
-        print("Kill Players button clicked!")
+        for _, p in ipairs(game:GetService("Players"):GetPlayers()) do
+            local a = {[1] = workspace:FindFirstChild(p.Name)}
+            game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("TypableNetwork"):WaitForChild("6"):InvokeServer(unpack(a))
+        end
     end,
-    BackgroundTransparency = 0,  -- No transparency for the button background
+    BackgroundTransparency = 0,
 })
