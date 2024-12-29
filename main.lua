@@ -1,15 +1,12 @@
--- Load the ImGui library using loadstring
 local ImGui = loadstring(game:HttpGet('https://github.com/depthso/Roblox-ImGUI/raw/main/ImGui.lua'))()
 
--- Create a window with specified properties
 local Window = ImGui:CreateWindow({
-    Title = "Action Window",  -- Window title
-    Size = UDim2.fromOffset(350, 300),  -- Window size (350x300)
-    Position = UDim2.new(0, 0, 0, 0),  -- Position at the top-left of the screen
-    BackgroundTransparency = 0,  -- No transparency for the window background
+    Title = "Dingus",
+    Size = UDim2.fromOffset(250, 200), 
+    Position = UDim2.new(0, 0, 0, 0),
+    BackgroundTransparency = 0, 
 })
 
--- Create a tab to hold the buttons
 local Tab = Window:CreateTab({
     Name = "Actions",
     Visible = true,
@@ -39,7 +36,40 @@ Tab:Button({
 })
 
 Tab:Button({
-    Text = "Do Tasks",
+    Text = "Kill Players",
+    Callback = function(self)
+        local localPlayerName = game.Players.LocalPlayer.Name
+    
+        for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+            local playerName = player.Name
+            if playerName ~= localPlayerName then
+                for _, item in pairs(workspace:GetDescendants()) do
+                    if item:IsA("Model") and item.Name == playerName then
+                        local ghost = item:FindFirstChild("Ghost")
+                        local rig = item:FindFirstChild("Rig")
+                        local revolver = rig and rig:FindFirstChild("Revolver")
+    
+                        if not ghost and not revolver then
+                            local highlight = Instance.new("Highlight")
+                            highlight.Name = "PlayerHighlight"
+                            highlight.Adornee = item
+                            highlight.FillColor = Color3.fromRGB(255, 0, 0)
+                            highlight.FillTransparency = 0.5
+                            highlight.OutlineColor = Color3.fromRGB(255, 0, 0)
+                            highlight.OutlineTransparency = 0
+                            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                            highlight.Parent = item
+                        end
+                    end
+                end
+            end
+        end
+    end,
+    BackgroundTransparency = 0,
+})
+
+Tab:Button({
+    Text = "Do Tasks (Kinda Sucks)",
     Callback = function(self)
         for _, d in pairs(workspace:GetDescendants()) do
             if d:IsA("ProximityPrompt") then
