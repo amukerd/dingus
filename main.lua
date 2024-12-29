@@ -36,7 +36,7 @@ Tab:Button({
 })
 
 Tab:Button({
-    Text = "Kill Players",
+    Text = "ESP (Kinda Sucks)",
     Callback = function(self)
         local localPlayerName = game.Players.LocalPlayer.Name
     
@@ -69,7 +69,7 @@ Tab:Button({
 })
 
 Tab:Button({
-    Text = "Do Tasks (Kinda Sucks)",
+    Text = "Do Tasks (Also Sucks)",
     Callback = function(self)
         for _, d in pairs(workspace:GetDescendants()) do
             if d:IsA("ProximityPrompt") then
