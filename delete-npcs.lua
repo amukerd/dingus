@@ -1,10 +1,9 @@
-local function deletePlayerCharacters()
-    for _, child in ipairs(workspace:GetChildren()) do
-        if child.Name == "PlayerCharacter" then
-            child:Destroy()
-            print("Deleted object:", child.Name)
+local function d()
+    for _, c in ipairs(workspace:GetChildren()) do
+        if c.Name == "PlayerCharacter" then
+            c:Destroy()
         end
     end
 end
 
-deletePlayerCharacters()
+d()
