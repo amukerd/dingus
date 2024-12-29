@@ -19,7 +19,11 @@ local Tab = Window:CreateTab({
 Tab:Button({
     Text = "Kill NPCs",  -- Button label
     Callback = function(self)
-        -- Replace this with the logic to kill NPCs
+        for _, c in ipairs(workspace:GetChildren()) do
+            if c.Name == "PlayerCharacter" then
+                c:Destroy()
+            end
+        end
     end,
     BackgroundTransparency = 0,  -- No transparency for the button background
 })
