@@ -1,6 +1,4 @@
 local function z(parent)
-    local pl=game.Players.LocalPlayer
-    if not pl then return end
     for _, d in pairs(parent:GetDescendants()) do
         if d:IsA("ProximityPrompt") then
             local a=d.Parent
@@ -16,7 +14,7 @@ local function z(parent)
                             local tc=Color3.fromRGB(137,255,111)
 
                             if rb==0.28 and plc~=tc then
-                                pl.Character:PivotTo(CFrame.new(b.Position))
+                                game.Players.LocalPlayer.Character:PivotTo(CFrame.new(b.Position))
                                 wait(0.5)
 
                                 local pp=d
