@@ -24,12 +24,5 @@ local function z(parent)
                                 game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.E,false,game)
 
                                 wait(1)
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
+end end end end end end end end
 z(workspace)
