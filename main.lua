@@ -2,8 +2,8 @@ local ImGui = loadstring(game:HttpGet('https://github.com/depthso/Roblox-ImGUI/r
 
 local Window = ImGui:CreateWindow({
     Title = "Dingus",
-    Size = UDim2.fromOffset(250, 200), 
-    Position = UDim2.new(0, 0, 0, 0),
+    Size = UDim2.fromOffset(182, 150), 
+    Position = UDim2.new(0, 0, 0, 200),
     BackgroundTransparency = 0, 
 })
 
