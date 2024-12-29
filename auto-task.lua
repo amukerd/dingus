@@ -20,10 +20,10 @@ local function z(parent)
                                 wait(0.5)
 
                                 local pp=d
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.E,false,game)
                                 
                                 wait(pp.HoldDuration or 2)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.E,false,game)
 
                                 wait(1)
                             end
