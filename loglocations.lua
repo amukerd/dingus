@@ -2,10 +2,6 @@ local function z(parent)
     local pl = game.Players.LocalPlayer
     if not pl then return end
 
-    local function r(v, n)
-        return math.round(v * 10^n) / 10^n
-    end
-
     for _, d in pairs(parent:GetDescendants()) do
         if d:IsA("ProximityPrompt") then
             local a = d.Parent
@@ -16,7 +12,7 @@ local function z(parent)
                     if l then
                         local p = l:FindFirstChildOfClass("PointLight")
                         if p then
-                            local rb = r(p.Brightness, 2)
+                            local rb = math.round(p.Brightness * 10^2) / 10^2
                             local plc = p.Color
                             local tc = Color3.fromRGB(137, 255, 111)
 
